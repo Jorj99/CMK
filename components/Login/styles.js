@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     width: widthPercentageToDP(80),
     borderBottomWidth: 1,
     borderColor: '#F1F1F1',
+    color: 'black',
   },
   inputFieldPassword: {
     fontSize: 22,
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
     width: widthPercentageToDP(80),
     borderBottomWidth: 1,
     borderColor: '#F1F1F1',
+    color: 'black',
   },
   emailInputView: {
     marginTop: heightPercentageToDP(5),
