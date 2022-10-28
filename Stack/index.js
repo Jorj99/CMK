@@ -13,6 +13,7 @@ const StackComponent = () => {
           headerShown: false,
         }}>
         <Stack.Screen name="Login" component={components.Login} />
+        <Stack.Screen name="Register" component={components.Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );
