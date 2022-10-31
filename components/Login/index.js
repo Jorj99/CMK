@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import {Logo, Eye} from '@images';
 import styles from './styles';
-import gStyle from '../../gStyle';
 import CustomButton from '../Button.js';
+import gStyle from '../../gStyle';
 
 const Login = ({navigation}) => {
   const [passShow, setPassShow] = React.useState(true);
@@ -23,7 +23,7 @@ const Login = ({navigation}) => {
         <View style={gStyle.container}>
           <View style={gStyle.mainView}>
             <Logo style={gStyle.logo} />
-            <Text style={styles.title}>Log In To Workroom</Text>
+            <Text style={gStyle.title}>Log In To Workroom</Text>
             <View style={styles.emailInputView}>
               <Text style={styles.InputText}>Yuor Email</Text>
               <TextInput
@@ -60,8 +60,9 @@ const Login = ({navigation}) => {
               </TouchableOpacity>
             </View>
             <CustomButton
-              calpack={() => console.log('login')}
+              cb={() => console.log('login')}
               text={'Log In'}
+              // TODO:
             />
             <View style={styles.register}>
               <Text style={styles.newUser}>New User? </Text>

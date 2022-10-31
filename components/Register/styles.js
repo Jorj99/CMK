@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '@constants';
+import {COLORS, FONTS} from '@constants';
 import {widthPercentageToDP, heightPercentageToDP} from '@utils';
 
 const styles = StyleSheet.create({
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   selectIcon: {width: 15, height: 15},
 
   inputPhone: {
-    fontSize: 18,
+    fontSize: FONTS.H3,
     margin: 0,
     marginLeft: 20,
     padding: 0,
@@ -60,19 +60,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  inputPhone_active: {
+    fontSize: FONTS.H3,
+    margin: 0,
+    marginLeft: 20,
+    padding: 0,
+    paddingLeft: 10,
+    width: widthPercentageToDP(50),
+    borderWidth: 1,
+    color: COLORS.DARK_GRAY,
+    borderColor: COLORS.BLUE,
+    borderRadius: 10,
+  },
+
   inputName: {
-    fontSize: 22,
+    fontSize: FONTS.H2,
     margin: 0,
     padding: 0,
     paddingLeft: 5,
     width: widthPercentageToDP(80),
     borderBottomWidth: 1,
     borderColor: COLORS.GRAY,
-    color: COLORS.TEXT_COLOR,
+    color: COLORS.BLACK,
   },
 
   inputPassword: {
-    fontSize: 22,
+    fontSize: FONTS.H2,
     margin: 0,
     paddingRight: 30,
     paddingTop: 0,
@@ -81,7 +94,7 @@ const styles = StyleSheet.create({
     width: widthPercentageToDP(80),
     borderBottomWidth: 1,
     borderColor: COLORS.GRAY,
-    color: COLORS.TEXT_COLOR,
+    color: COLORS.BLACK,
   },
 
   eyePassword: {

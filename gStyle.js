@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '@constants';
+import {COLORS, FONTS} from '@constants';
 import {heightPercentageToDP} from '@utils';
 
 const styles = StyleSheet.create({
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     height: heightPercentageToDP(10),
   },
   title: {
-    fontSize: heightPercentageToDP(4),
-    color: COLORS.TEXT_COLOR,
+    fontSize: FONTS.H1,
+    color: COLORS.BLACK,
     fontWeight: '500',
     margin: 0,
     padding: 0,

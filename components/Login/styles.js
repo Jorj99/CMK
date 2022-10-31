@@ -1,30 +1,22 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '@constants';
+import {COLORS, FONTS} from '@constants';
 import {heightPercentageToDP, widthPercentageToDP} from '@utils';
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: heightPercentageToDP(4),
-    color: COLORS.TEXT_COLOR,
-    fontWeight: '500',
-    margin: 0,
-    padding: 0,
-  },
-
   //  INPUTS
 
   inputFieldEmail: {
-    fontSize: 22,
+    fontSize: FONTS.H2,
     margin: 0,
     padding: 0,
     paddingLeft: 5,
     width: widthPercentageToDP(80),
     borderBottomWidth: 1,
     borderColor: COLORS.GRAY,
-    color: COLORS.TEXT_COLOR,
+    color: COLORS.BLACK,
   },
   inputFieldPassword: {
-    fontSize: 22,
+    fontSize: FONTS.H2,
     margin: 0,
     paddingRight: 30,
     paddingTop: 0,
@@ -33,7 +25,7 @@ const styles = StyleSheet.create({
     width: widthPercentageToDP(80),
     borderBottomWidth: 1,
     borderColor: COLORS.GRAY,
-    color: COLORS.TEXT_COLOR,
+    color: COLORS.BLACK,
   },
   emailInputView: {
     marginTop: heightPercentageToDP(5),
@@ -84,7 +76,7 @@ const styles = StyleSheet.create({
     marginTop: heightPercentageToDP(4),
   },
   LoginBtnText: {
-    fontSize: 18,
+    fontSize: FONTS.H3,
     color: 'white',
   },
 

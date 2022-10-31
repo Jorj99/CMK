@@ -7,30 +7,25 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Logo, ArrowDown, ArrowUp, Eye} from '@images';
-import styles from './styles';
-import gStyle from '../../gStyle';
 import SelectDropdown from 'react-native-select-dropdown';
 import {TextInput} from 'react-native-gesture-handler';
+import {Logo, ArrowDown, ArrowUp, Eye} from '@images';
+import {countries} from '@configs';
+import {addDashesInPhone} from '@utils';
+import {COLORS} from '@constants';
+import styles from './styles';
 import CustomButton from '../Button.js';
+import gStyle from '../../gStyle';
 
 const Register = ({navigation}) => {
-  const countries = ['+ 374', '+7'];
   const [isOpenSelect, setIsOpenSelect] = useState(false);
   const [passShow, setPassShow] = useState(true);
   const [confirmPassShow, setConfirmPassShow] = useState(true);
+  const [phoneCode, setPhoneCode] = useState(0);
   const [phoneInput, setPhoneInput] = useState('');
+  const [isActivePhoneInput, setIsActivePhoneInput] = useState(false);
 
   const finishRegister = () => navigation.navigate('Login');
-
-  const addDashesInPhone = text => {
-    if (text.length < 8 && phoneInput < text) {
-      const withoutDashText = text.replaceAll('-', '');
-      setPhoneInput(withoutDashText.replace(/.{2}/g, '$&-'));
-    } else {
-      setPhoneInput(text);
-    }
-  };
 
   return (
     <SafeAreaView style={gStyle.safeAreaView}>
@@ -45,6 +40,8 @@ const Register = ({navigation}) => {
                 data={countries}
                 onSelect={(selectedItem, index) => {
                   console.log(selectedItem, index);
+                  setPhoneCode(index);
+                  setPhoneInput('');
                 }}
                 onFocus={() => {
                   setIsOpenSelect(true);
@@ -53,15 +50,14 @@ const Register = ({navigation}) => {
                   setIsOpenSelect(false);
                 }}
                 dropdownIconPosition={'right'}
-                renderDropdownIcon={() =>
-                  isOpenSelect ? (
-                    <Image style={styles.selectIcon} source={ArrowUp} />
-                  ) : (
-                    <Image style={styles.selectIcon} source={ArrowDown} />
-                  )
-                }
-                defaultValueByIndex={1}
-                dropdownBackgroundColor={'white'}
+                renderDropdownIcon={() => (
+                  <Image
+                    style={styles.selectIcon}
+                    source={isOpenSelect ? ArrowUp : ArrowDown}
+                  />
+                )}
+                defaultValueByIndex={0}
+                dropdownBackgroundColor={COLORS.WHITE}
                 dropdownOverlayColor={'transparent'}
                 buttonStyle={
                   isOpenSelect ? styles.select_active : styles.select
@@ -70,12 +66,24 @@ const Register = ({navigation}) => {
                 buttonTextStyle={styles.selectTextColor}
               />
               <TextInput
-                style={styles.inputPhone}
+                style={
+                  isActivePhoneInput
+                    ? styles.inputPhone_active
+                    : styles.inputPhone
+                }
                 autoCapitalize="none"
                 autoCorrect={false}
                 value={phoneInput}
                 enablesReturnKeyAutomatically
-                onChangeText={addDashesInPhone}
+                onChangeText={text =>
+                  addDashesInPhone(text, phoneCode, setPhoneInput)
+                }
+                onFocus={() => {
+                  setIsActivePhoneInput(true);
+                }}
+                onBlur={() => {
+                  setIsActivePhoneInput(false);
+                }}
               />
             </View>
             <Text style={styles.InputText}>Your Name</Text>
@@ -115,7 +123,7 @@ const Register = ({navigation}) => {
             <View>
               <TouchableOpacity
                 style={styles.eyeBackground}
-                onPress={() => setConfirmPassShow(!passShow)}>
+                onPress={() => setConfirmPassShow(!confirmPassShow)}>
                 <Eye style={styles.eyePassword} />
               </TouchableOpacity>
               <TextInput

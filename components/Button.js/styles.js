@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '@constants';
+import {COLORS, FONTS} from '@constants';
 import {heightPercentageToDP} from '@utils';
 
 const styles = StyleSheet.create({
@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     marginBottom: heightPercentageToDP(4),
   },
   btnText: {
-    fontSize: 18,
-    color: 'white',
+    fontSize: FONTS.H3,
+    color: COLORS.WHITE,
   },
 });
 
