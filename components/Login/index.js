@@ -9,22 +9,26 @@ import {
 } from 'react-native';
 import {Logo, Eye} from '@images';
 import styles from './styles';
+import CustomButton from '../Button.js';
+import gStyle from '../../gStyle';
 
 const Login = ({navigation}) => {
   const [passShow, setPassShow] = React.useState(true);
 
+  const register = () => navigation.navigate('Register');
+
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.container}>
-          <View style={styles.mainView}>
-            <Logo style={styles.logo} />
-            <Text style={styles.title}>Log In To Workroom</Text>
+    <SafeAreaView style={gStyle.safeAreaView}>
+      <ScrollView style={gStyle.scrollView}>
+        <View style={gStyle.container}>
+          <View style={gStyle.mainView}>
+            <Logo style={gStyle.logo} />
+            <Text style={gStyle.title}>Log In To Workroom</Text>
             <View style={styles.emailInputView}>
               <Text style={styles.InputText}>Yuor Email</Text>
               <TextInput
                 style={styles.inputFieldEmail}
-                name="password"
+                name="email"
                 autoCapitalize="none"
                 autoCorrect={false}
                 enablesReturnKeyAutomatically
@@ -55,14 +59,14 @@ const Login = ({navigation}) => {
                 <Text style={styles.forgotPasswordText}>Forgot password?</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={styles.LoginBtn}
-              onPress={() => console.log('Login')}>
-              <Text style={styles.LoginBtnText}>Log In</Text>
-            </TouchableOpacity>
+            <CustomButton
+              cb={() => console.log('login')}
+              text={'Log In'}
+              // TODO:
+            />
             <View style={styles.register}>
               <Text style={styles.newUser}>New User? </Text>
-              <TouchableOpacity onPress={() => console.log('Create Account')}>
+              <TouchableOpacity onPress={() => register()}>
                 <Text style={styles.createAccount}>Create Account</Text>
               </TouchableOpacity>
             </View>

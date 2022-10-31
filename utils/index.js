@@ -28,3 +28,36 @@ export const heightPercentageToDP = heightPercent => {
   // size (dp) to the nearest one that correspons to an integer number of pixels.
   return PixelRatio.roundToNearestPixel((screenHeight * elemHeight) / 100);
 };
+
+// Add dashes on phone text
+export const addDashesInPhone = (text, phoneCode, setPhoneInput) => {
+  // 0 = '+ 374'
+  if (phoneCode === 0 && text.length <= 11) {
+    const withoutDashText = text.replace(
+      /(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+      '$1$2-$3$4-$5$6-$7$8',
+    );
+    setPhoneInput(withoutDashText);
+  } else if (phoneCode === 0 && text.length <= 8) {
+    const withoutDashText = text.replace(
+      /(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+      '$1$2-$3$4-$5$6-$7$8',
+    );
+    setPhoneInput(withoutDashText);
+  }
+
+  // 1 = '+7'
+  if (phoneCode === 1 && text.length <= 13) {
+    const withoutDashText = text.replace(
+      /(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+      '$1$2$3-$4$5$6-$7$8-$9$10',
+    );
+    setPhoneInput(withoutDashText);
+  } else if (phoneCode === 0 && text.length <= 11) {
+    const withoutDashText = text.replace(
+      /(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+      '$1$2-$3$4-$5$6-$7$8',
+    );
+    setPhoneInput(withoutDashText);
+  }
+};
